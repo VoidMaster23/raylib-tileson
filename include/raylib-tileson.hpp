@@ -1,16 +1,24 @@
-#ifndef RAYLIB_TILESON_H_
-#define RAYLIB_TILESON_H_
+#ifndef RAYLIB_TILESON_HPP_
+#define RAYLIB_TILESON_HPP_
+#include <string>
+#include <vector>
+#include <map>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "tileson.hpp"
 
 #include "raylib.h"
+
+class RaylibTilesonData {
+    public:
+        std::map<std::string, Texture> textures;
+        tson::Map* map;
+};
+
 
 /**
  * The Map data.
  */
-typedef struct Map {
+typedef struct {
     /**
      * The amount of horizontal tiles.
      */
@@ -38,7 +46,7 @@ typedef struct Map {
      *
      * @see RaylibTilesonData
      */
-    void* data;
+     RaylibTilesonData* data;
 } Map;
 
 /**
@@ -86,8 +94,6 @@ void DrawTiled(Map map, int posX, int posY, Color tint);
  */
 void UnloadMap(Map map);
 
-#ifdef __cplusplus
-}
+
 #endif
 
-#endif  // RAYLIB_TILESON_H_

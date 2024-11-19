@@ -63,6 +63,7 @@
 #include <map>
 #include <memory>
 #include <initializer_list>
+#include <iostream>
 
 #define JSON11_IS_DEFINED
 
@@ -868,8 +869,9 @@ namespace json11 {
 				if (depth > max_depth) {
 					return fail("exceeded maximum nesting depth");
 				}
-
+				
 				char ch = get_next_token();
+				std::cout << ch;
 				if (failed)
 					return Json();
 
@@ -893,6 +895,7 @@ namespace json11 {
 				if (ch == '{') {
 					map<string, Json> data;
 					ch = get_next_token();
+					std::cout << ch;
 					if (ch == '}')
 						return data;
 
@@ -905,6 +908,7 @@ namespace json11 {
 							return Json();
 
 						ch = get_next_token();
+						std::cout << ch;
 						if (ch != ':')
 							return fail("expected ':' in object, got " + esc(ch));
 
@@ -913,12 +917,14 @@ namespace json11 {
 							return Json();
 
 						ch = get_next_token();
+						std::cout << ch ;
 						if (ch == '}')
 							break;
 						if (ch != ',')
 							return fail("expected ',' in object, got " + esc(ch));
 
 						ch = get_next_token();
+						std::cout << ch;
 					}
 					return data;
 				}

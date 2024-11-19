@@ -33,10 +33,6 @@
 #ifndef RAYLIB_ASSERT_H
 #define RAYLIB_ASSERT_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 // How to report failed assertions
 #ifndef RAYLIB_ASSERT_LOG
 /**
@@ -309,8 +305,5 @@ extern "C" {
 #define AssertColorSame_6(color1, color2, message, p1, p2, p3) AssertColorSame_3(color1, color2, TextFormat(message, p1, p2, p3))
 #define AssertColorSame_7(color1, color2, message, p1, p2, p3, p4) AssertColorSame_3(color1, color2, TextFormat(message, p1, p2, p3, p4))
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif  // RAYLIB_ASSERT_H

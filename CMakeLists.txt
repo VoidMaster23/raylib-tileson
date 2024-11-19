@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.11)
 project(
     raylib-tileson
-    VERSION 4.2.0
+    VERSION 4.2.1
     DESCRIPTION "raylib-tileson"
-    HOMEPAGE_URL "https://github.com/robloach/raylib-tileson"
-    LANGUAGES C CXX
+    HOMEPAGE_URL "https://github.com/VoidMaster23/raylib-tileson.git"
+    LANGUAGES CXX
 )
 
 # C++17
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 

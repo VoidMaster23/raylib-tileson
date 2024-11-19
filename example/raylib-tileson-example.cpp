@@ -1,7 +1,7 @@
 #include "raylib.h"
 
 #define RAYLIB_TILESON_IMPLEMENTATION
-#include "raylib-tileson.h"
+#include "raylib-tileson.hpp"
 
 int main(int argc, char* argv[]) {
     // Initialization

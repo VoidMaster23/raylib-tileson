@@ -3,16 +3,11 @@
 #include <map>
 
 #include "raylib.h"
-#include "raylib-tileson.h"
+#include "raylib-tileson.hpp"
 #include "tileson.hpp"
 
 // TODO: Add World support with LoadTiledWorld()
 
-class RaylibTilesonData {
-    public:
-        std::map<std::string, Texture> textures;
-        tson::Map* map;
-};
 
 Color ColorFromTiledColor(tson::Colori color) {
     Color output;
@@ -62,7 +57,7 @@ Map LoadTiledFromMemory(const unsigned char *fileData, int dataSize, const char*
 
     if (map == nullptr) {
         TraceLog(LOG_ERROR, "TILESON: Error parsing the given map");
-        struct Map output;
+        Map output;
         output.data = NULL;
         return output;
     }
@@ -70,7 +65,7 @@ Map LoadTiledFromMemory(const unsigned char *fileData, int dataSize, const char*
     // Check if it parsed okay.
     if(map->getStatus() != tson::ParseStatus::OK) {
         TraceLog(LOG_ERROR, "TILESON: Map parse error: %s", map->getStatusMessage().c_str());
-        struct Map output;
+        Map output;
         output.data = NULL;
         return output;
     }
@@ -78,7 +73,7 @@ Map LoadTiledFromMemory(const unsigned char *fileData, int dataSize, const char*
     // Only support Ortogonal
     if (map->getOrientation() != "orthogonal") {
         TraceLog(LOG_ERROR, "TILESON: Only support for orthogonal maps");
-        struct Map output;
+        Map output;
         output.data = NULL;
         return output;
     }
@@ -95,7 +90,7 @@ Map LoadTiledFromMemory(const unsigned char *fileData, int dataSize, const char*
     }
 
     // Save the Map.
-    struct Map output;
+    Map output;
     output.width = map->getSize().x;
     output.height = map->getSize().y;
     output.tileWidth = map->getTileSize().x;
@@ -115,7 +110,7 @@ Map LoadTiled(const char* fileName) {
 
     if (map == nullptr) {
         TraceLog(LOG_ERROR, "TILESON: Error parsing the given map");
-        struct Map output;
+        Map output;
         output.data = NULL;
         return output;
     }
@@ -123,7 +118,7 @@ Map LoadTiled(const char* fileName) {
     // Check if it parsed okay.
     if(map->getStatus() != tson::ParseStatus::OK) {
         TraceLog(LOG_ERROR, "TILESON: Map parse error: %s", map->getStatusMessage().c_str());
-        struct Map output;
+        Map output;
         output.data = NULL;
         return output;
     }
@@ -131,7 +126,7 @@ Map LoadTiled(const char* fileName) {
     // Only support Ortogonal
     if (map->getOrientation() != "orthogonal") {
         TraceLog(LOG_ERROR, "TILESON: Only support for orthogonal maps");
-        struct Map output;
+        Map output;
         output.data = NULL;
         return output;
     }
@@ -148,7 +143,7 @@ Map LoadTiled(const char* fileName) {
     }
 
     // Save the Map.
-    struct Map output;
+    Map output;
     output.width = map->getSize().x;
     output.height = map->getSize().y;
     output.tileWidth = map->getTileSize().x;

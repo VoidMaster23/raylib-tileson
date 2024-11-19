@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "raylib-tileson.h"
+#include "raylib-tileson.hpp"
 #include "raylib-assert.h"
 
 int main(int argc, char *argv[]) {
