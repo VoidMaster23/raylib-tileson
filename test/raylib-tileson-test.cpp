@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     }
 
     {
-        unsigned int* bytesRead;
+        int* bytesRead;
         unsigned char* data = LoadFileData("resources/desert.json", bytesRead);
         Map map = LoadTiledFromMemory(data, *bytesRead, "resources");
 
